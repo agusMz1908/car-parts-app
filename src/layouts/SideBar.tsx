@@ -1,10 +1,11 @@
 import React, { FC, useState } from "react"
+import { Link } from "react-router-dom";
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
 
 import engine from "../assets/images/engine.png"
 import body from "../assets/images/body.png"
 import brake from "../assets/images/brake.png"
-import shockAbsorber from "../assets/images/shock-absorber.png"
+import suspension from "../assets/images/suspension.png"
 import exhaust from "../assets/images/exhaust.png"
 import vector from "../assets/images/vector.png"
 import gearbox from "../assets/images/gearbox.png"
@@ -15,133 +16,64 @@ interface MenuItemOptions {
 }
 
 interface SideBarProps {
-    title: string;
-    icon: JSX.Element;
-    arrowClose: JSX.Element;
-    arrowOpen: JSX.Element;
-    options: MenuItemOptions[];
+    title?: string;
+    icon?: string;
+    arrowClose?: JSX.Element;
+    arrowOpen?: JSX.Element;
+    options?: MenuItemOptions[];
 }
 
 const SideBar: FC<SideBarProps> = ({ title, icon, arrowClose, arrowOpen, options }) => {
-    const menuItems = [
+    const sideMenu = [
         {
-            title: "Motor",
-            icon: { engine },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "engine/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "engine/add"
-                }
-            ]
+            title: "MOTOR",
+            icon: engine,
+            path: "/engine"
         },
         {
-            title: "Carroceria",
-            icon: { body },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "body/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "body/add"
-                }
-            ]
+            title: "CARROCERIA",
+            icon: body,
+            path: "/body"
         },
         {
-            title: "Amortiguadores",
-            icon: { shockAbsorber },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "shockabsorber/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "shockabsorber/add"
-                }
-            ]
+            title: "SUSPENSION",
+            icon: suspension,
+            path: "/suspension"
         },
         {
-            title: "Transmision",
-            icon: { gearbox },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "gearbox/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "gearbox/add"
-                }
-            ]
+            title: "TRANSMISION",
+            icon: gearbox,
+            path: "/engine"
         },
         {
-            title: "Sistema de Frenado",
-            icon: { brake },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "brake/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "brake/add"
-                }
-            ]
+            title: "SISTEMA DE FRENADO",
+            icon: brake,
+            path: "/brake"
         },
         {
-            title: "Inyeccion",
-            icon: { vector },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "vector/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "vector/add"
-                }
-            ]
+            title: "INYECCION",
+            icon: vector,
+            path: "/inyection"
         },
         {
-            title: "Sistema de Escape",
-            icon: { exhaust },
-            arrowClose: <BsFillCaretRightFill />,
-            arrowOpen: <BsFillCaretDownFill />,
-            options: [
-                {
-                    title: "Listado",
-                    path: "exhaust/list"
-                },
-                {
-                    title: "Agregar",
-                    path: "exhaust/add"
-                }
-            ]
+            title: "SISTEMA DE ESCAPE",
+            icon: exhaust,
+            path: "/exhaust"
+
         },
 
     ]
     return (
-        <div className="fixed top-24 h-full w-64 bg-black shado-black shadow-2xl">
-            <div>
-
+        <div className="fixed top-24 h-full w-64 bg-black shadow-black shadow-2xl">
+            <div className="flex flex-col">
+                {sideMenu.map((item) => (
+                    <Link to={item.path} className="flex items-center space-x-4 py-3 hover:bg-neutral-500 text-white font-bold">
+                        <img src={item.icon} className="w-10 ml-3" />
+                        <span className="">
+                            {item.title}
+                        </span>
+                    </Link>
+                ))}
             </div>
         </div>
     )

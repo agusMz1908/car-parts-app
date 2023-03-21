@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react'
 
-interface VectorProps {
+interface InyectionProps {
 }
-const Vector: FC<VectorProps> = ({ }) => {
+const Inyection: FC<InyectionProps> = ({ }) => {
     return (
         <div>
             <h1>Vector</h1>
@@ -10,4 +10,4 @@ const Vector: FC<VectorProps> = ({ }) => {
     )
 }
 
-export default Vector
+export default Inyection

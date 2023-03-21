@@ -10,8 +10,8 @@ import Exhaust from './pages/Exhaust'
 import Gearbox from './pages/Gearbox'
 import Home from './pages/Home'
 import NotFound404 from './pages/NotFound404'
-import ShockAbsrober from './pages/ShockAbsorber'
-import Vector from './pages/Vector'
+import Suspension from './pages/Suspension'
+import Inyection from './pages/Inyections'
 
 const App: FC = () => {
   const routes = useRoutes([
@@ -39,12 +39,12 @@ const App: FC = () => {
       element: <Gearbox />
     },
     {
-      path: "shockabsorber/*",
-      element: <ShockAbsrober />
+      path: "suspension/*",
+      element: <Suspension />
     },
     {
-      path: "vector/*",
-      element: <Vector />
+      path: "inyection/*",
+      element: <Inyection />
     },
     {
       path: "*",
@@ -53,9 +53,9 @@ const App: FC = () => {
   ])
 
   return (
-    <div className="fixed h-screen w-screen bg-neutral-50 flex flex-col">
+    <div className="relative h-screen w-screen bg-neutral-50 flex flex-col">
       <NavBar />
-      <div className="flex">
+      <div className="flex h-full">
         <SideBar />
         <div className="fixed top-24 left-72 w-full h-full ml-8">{routes}</div>
       </div>
