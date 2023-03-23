@@ -1,16 +1,24 @@
 import React, { FC, useState } from 'react'
 import logo from '../assets/images/turbina-logo.jpg'
-
 import { BiLogOut, BiSearchAlt } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
-
 import { Link } from "react-router-dom";
+import ModalUser from "../components/modalUser"
 
 interface NavBarProps {
 
 }
 
 const NavBar: FC<NavBarProps> = ({ }) => {
+    const [modal, setModal] = useState(false)
+
+    const handleModal = () => {
+        setModal(true)
+    }
+
+    const handleCloseModal = () => {
+        setModal(false)
+    }
 
     return (
         <div className="fixed w-full px-16 h-24 bg-black flex justify-between items-center">
@@ -31,6 +39,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
                     <FiUser
                         size={40}
                         className="rounded-full p-2 bg-red-200 text-black hover:text-black hover:bg-red-600"
+                        onClick={handleModal}
                     />
                     <span>Admin</span>
                 </button>
@@ -38,6 +47,7 @@ const NavBar: FC<NavBarProps> = ({ }) => {
                     <BiLogOut size={35} className="hover:text-red-600" />
                 </button>
             </div>
+            {modal && <ModalUser closeModal={handleCloseModal} />}
         </div>
     );
 }
